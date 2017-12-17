@@ -69,7 +69,7 @@ A possible improvement would be to modified the parameters, especially the low a
 Another potential improvement could be to teach my pipeline to detect edges in a colorful image rather than grayscale image. Thus I can add a condition to only detect edges of objects only with a color of white and yellow.
 
 
-### 4. Change in Help Function
+### 4. Changes in Help Function in 1st submission
 
 1. The thickness in `draw_lines` is changed from 2 to 4 in order to draw bolder lines.
 
@@ -81,3 +81,22 @@ Another potential improvement could be to teach my pipeline to detect edges in a
 ```
 
 3.  β in `weighted_img` is changed from 1.0 to 0.6 to draw half transparent lines.
+
+
+### 5. Changes in 2nd submission
+
+1. The `min_line_len` is changed from 40 to 100 as recommende.
+
+2. I discuss whether the slope is positive or negative respectively to draw singel right and single left lane line:
+
+```
+            slope = (y2-y1)/(x2-x1)
+            # draw the right lane line
+            if slope > 0:
+                cv2.line(img, (x1, y1), (x2, y2), color, thickness)
+            # draw the left lane line
+            elif slope < 0:
+                cv2.line(img, (x1, y1), (x2, y2), color, thickness)
+```
+3. What's more I calculate the point (x0, y0), which is the intersection point of the screen edge and the line decided by (x1, y1) and (x2, y2), by taking use of the relationship: (y0 - y1)/(x0 - x1) = (y2 - y1) / (x2 - x1).
+
